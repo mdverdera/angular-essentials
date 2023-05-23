@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-essentials';
+  items = ['Apples','Bananas','Cherries'];
+
+  onAdd(newItem: string) {
+    console.log('Add clicked');
+    this.items.push(newItem);
+    console.log(this.items);
+  }
 }
