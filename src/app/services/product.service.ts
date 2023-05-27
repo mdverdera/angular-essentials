@@ -9,9 +9,16 @@ export class ProductService {
   private product$ = new BehaviorSubject<any>({});
   selectedProduct$ = this.product$.asObservable();
 
+  private productListBus$ = new BehaviorSubject<any>({});
+  productList$ = this.productListBus$.asObservable();
+
   constructor() { }
 
-setProduct(product: products) {
-  this.product$.next(product);
-}
+  setProduct(product: products) {
+    this.product$.next(product);
+  }
+
+  setProductList(products: products[]) {
+    this.productListBus$.next(products);
+  }
 }

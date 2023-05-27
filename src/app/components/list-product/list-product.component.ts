@@ -14,7 +14,11 @@ export class ListProductComponent {
 
   @Output() onSelected = new EventEmitter<products>();
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    this.productService.productList$.subscribe((value) => {
+      this.productList = value;
+    })
+  }
 
   onSelectedProduct(product: products) {
     // console.log(product);

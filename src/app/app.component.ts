@@ -27,7 +27,9 @@ export class AppComponent {
   ngOnInit(): void {
     this.productService.selectedProduct$.subscribe((value) => {
       this.selectedProduct = value;
-    })
+    });
+
+    this.productService.setProductList(this.products);
   }
 
   ngAfterViewInit() {
