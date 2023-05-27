@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { products } from './model/products';
+import { ListProductComponent } from './components/list-product/list-product.component';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,9 @@ import { products } from './model/products';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild(ListProductComponent) productList: any;
+  sessionId: any;
+
   title = 'angular-essentials';
   items = ['Apples','Bananas','Cherries'];
 
@@ -16,6 +21,19 @@ export class AppComponent {
     {name: 'Beans', id:2, price:300},
     {name: 'Banana', id:3, price:400},
   ]
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.productService.selectedProduct$.subscribe((value) => {
+      this.selectedProduct = value;
+    })
+  }
+
+  ngAfterViewInit() {
+    this.sessionId = this.productList.sessionId;
+  }
+
   onAdd(newItem: string) {
     console.log('Add clicked');
     this.items.push(newItem);
