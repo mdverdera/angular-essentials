@@ -1,2 +1,5 @@
 <app-cart [items]="items" (addItem)="onAdd($event)"></app-cart> 
-<app-list-product [productList]="products"></app-list-product>
+<app-list-product [productList]="products" (onSelected)="onSelectedProduct($event)"></app-list-product>
+<div *ngIf="selectedProduct">
+    <h1>You selected {{selectedProduct.name}}</h1>
+</div>
