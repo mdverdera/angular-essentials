@@ -9,6 +9,11 @@ export class AppComponent {
   title = 'angular-essentials';
   items = ['Apples','Bananas','Cherries'];
 
+  products = [
+    {name: 'Rice', id:1, price:200},
+    {name: 'Beans', id:2, price:300},
+    {name: 'Banana', id:3, price:400},
+  ]
   onAdd(newItem: string) {
     console.log('Add clicked');
     this.items.push(newItem);
